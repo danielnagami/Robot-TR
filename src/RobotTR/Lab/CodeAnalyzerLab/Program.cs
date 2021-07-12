@@ -7,7 +7,7 @@ namespace CodeAnalyzerLab
     class Program
     {
         static void Main(string[] args)
-        {
+        {   
             var files = new List<string>();
             GetCodeFiles("C:\\Studies\\desenvolvedor.io\\NerdStoreEnterprise", ref files);
 
