@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace RobotTR.Authentication.API.Controllers
 {
-    [Route("api/{controller}")]
+    [Route("api/auth")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -37,7 +37,7 @@ namespace RobotTR.Authentication.API.Controllers
             _appSettings = appSettings.Value;
         }
 
-        [HttpPost("nova-conta")]
+        [HttpPost("new-account")]
         public async Task<ActionResult> Register(UserRegister userRegister)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
@@ -53,13 +53,13 @@ namespace RobotTR.Authentication.API.Controllers
 
             if (result.Succeeded)
             {
-                var clienteResult = await ClientRegister(userRegister);
+                //var clienteResult = await ClientRegister(userRegister);
 
-                if (!clienteResult.ValidationResult.IsValid)
-                {
-                    await _userManager.DeleteAsync(user);
-                    return CustomResponse(clienteResult.ValidationResult);
-                }
+                //if (!clienteResult.ValidationResult.IsValid)
+                //{
+                //    await _userManager.DeleteAsync(user);
+                //    return CustomResponse(clienteResult.ValidationResult);
+                //}
 
                 return CustomResponse(await GenerateJWT(userRegister.Email));
             }
@@ -72,7 +72,7 @@ namespace RobotTR.Authentication.API.Controllers
             return CustomResponse();
         }
 
-        [HttpPost("autenticar")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login(UserLogin userLogin)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RobotTR.Authentication.API.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
