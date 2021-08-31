@@ -3,4 +3,4 @@ TCC from Computer Science college. It's a system that makes easier the first tec
 
 ## Architecture diagram:
 
-![image](https://user-images.githubusercontent.com/47904819/130551427-805f209d-8aa1-421b-a9f0-16d5303cdfa7.png)
+![image](https://user-images.githubusercontent.com/47904819/131425947-bae16557-d349-489d-8d81-b2a79c2e8286.png)
