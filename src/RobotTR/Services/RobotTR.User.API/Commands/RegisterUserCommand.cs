@@ -10,6 +10,7 @@ namespace RobotTR.User.API.Commands
         public RegisterUserCommand(Guid id, string nome, string username, string email, string empresa, string cargo)
         {
             AggregateId = id;
+            Id = id;
             Nome = nome;
             Username = username;
             Email = email;
