@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>de063ec5-5609-4d16-b6d7-dd0876bad7f8</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,10 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\Core\RobotTR.Core\RobotTR.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Mappings\" />
+    <ProjectReference Include="..\..\BuildingBlocks\MessageBus\RobotTR.MessageBus\RobotTR.MessageBus.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Services\RobotTR.WebAPI.Core\RobotTR.WebAPI.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,10 @@
 ﻿using FluentValidation.Results;
+using MediatR;
 using System;
 
 namespace RobotTR.Core.Messages
 {
-    public class Command
+    public abstract class Command : Message, IRequest<ValidationResult>
     {
         public DateTime Timestamp { get; private set; }
         public ValidationResult ValidationResult { get; set; }

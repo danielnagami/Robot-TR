@@ -1,13 +1,16 @@
-﻿using System;
+﻿using RobotTR.Core.Messages;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace RobotTR.Core.Messages.Integration
+namespace RobotTR.User.API.Application.Events
 {
-    public class IntegrationEvent : Event { }
-    public class UserRegisterIntegrationEvent : IntegrationEvent
+    public class UserRegistredEvent : Event
     {
-        public UserRegisterIntegrationEvent(Guid id, string nome, string username, string email, string empresa, string cargo)
+        public UserRegistredEvent(Guid id, string nome, string username, string email, string empresa, string cargo)
         {
-            Id = id;
+            AggregateId = id;
             Nome = nome;
             Username = username;
             Email = email;

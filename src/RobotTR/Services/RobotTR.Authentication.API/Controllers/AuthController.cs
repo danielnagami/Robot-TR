@@ -53,13 +53,13 @@ namespace RobotTR.Authentication.API.Controllers
 
             if (result.Succeeded)
             {
-                //var clienteResult = await ClientRegister(userRegister);
+                var clienteResult = await UserRegister(userRegister);
 
-                //if (!clienteResult.ValidationResult.IsValid)
-                //{
-                //    await _userManager.DeleteAsync(user);
-                //    return CustomResponse(clienteResult.ValidationResult);
-                //}
+                if (!clienteResult.ValidationResult.IsValid)
+                {
+                    await _userManager.DeleteAsync(user);
+                    return CustomResponse(clienteResult.ValidationResult);
+                }
 
                 return CustomResponse(await GenerateJWT(userRegister.Email));
             }
@@ -160,11 +160,11 @@ namespace RobotTR.Authentication.API.Controllers
 
         private static long ToUnixEpochDate(DateTime date) => (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
 
-        private async Task<ResponseMessage> ClientRegister(UserRegister userRegister)
+        private async Task<ResponseMessage> UserRegister(UserRegister userRegister)
         {
             var user = await _userManager.FindByEmailAsync(userRegister.Email);
 
-            var userRegistered = new UserRegisterIntegrationEvent(Guid.Parse(user.Id), userRegister.Nome, userRegister.Email, userRegister.CPF);
+            var userRegistered = new UserRegisterIntegrationEvent(Guid.Parse(user.Id), userRegister.Nome, userRegister.Username, userRegister.Email, userRegister.Empresa, userRegister.Cargo);
 
             try
             {

@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\MessageBus\RobotTR.MessageBus\RobotTR.MessageBus.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Services\RobotTR.WebAPI.Core\RobotTR.WebAPI.Core.csproj" />
+    <ProjectReference Include="..\RobotTR.User.API\RobotTR.User.API.csproj" />
   </ItemGroup>
 
 </Project>

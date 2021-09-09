@@ -1,34 +1,39 @@
-﻿using RobotTR.Core.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RobotTR.Core.Data;
 using RobotTR.User.API.Models;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RobotTR.User.API.Data.Repository
+namespace RobotTR.User.API.Data
 {
     public class UsersRepository : IUsersRepository
     {
         private readonly UsersContext _context;
         public IUnitOfWork UnitOfWork => _context;
 
+        public UsersRepository(UsersContext context)
+        {
+            _context = context;
+        }
+
         public void Add(Models.User user)
         {
-            throw new NotImplementedException();
+            _context.Add(user);
+        }
+
+        public async Task<IEnumerable<Models.User>> GetAll()
+        {
+            return await _context.Users.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<Models.User> GetUserByUsername(string username)
+        {
+            return await _context.Users.FirstOrDefaultAsync(c => c.Username == username);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Models.User>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Models.User> GetUserByUsername(string username)
-        {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
     }
 }
