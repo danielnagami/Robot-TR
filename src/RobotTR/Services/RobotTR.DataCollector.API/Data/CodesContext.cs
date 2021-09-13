@@ -4,22 +4,22 @@ using RobotTR.Core.Data;
 using RobotTR.Core.DomainObjects;
 using RobotTR.Core.Mediator;
 using RobotTR.Core.Messages;
+using RobotTR.DataCollector.API.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RobotTR.User.API.Data
+namespace RobotTR.DataCollector.API.Data
 {
-    public sealed class UsersContext : DbContext, IUnitOfWork
+    public sealed class CodesContext : DbContext, IUnitOfWork
     {
         private readonly IMediatorHandler _mediatorHandler;
-        public UsersContext(DbContextOptions<UsersContext> options, IMediatorHandler mediatorHandler) : base(options)
+        public CodesContext(DbContextOptions<CodesContext> options, IMediatorHandler mediatorHandler) : base(options)
         {
             _mediatorHandler = mediatorHandler;
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
-
-        public DbSet<Models.User> Users { get; set; }
+        public DbSet<Codes> Codes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,10 +33,10 @@ namespace RobotTR.User.API.Data
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
                 relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(UsersContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CodesContext).Assembly);
         }
 
-        public async Task<bool> Commit()
+        public Task<bool> Commit()
         {
             var success = await base.SaveChangesAsync() > 0;
 
