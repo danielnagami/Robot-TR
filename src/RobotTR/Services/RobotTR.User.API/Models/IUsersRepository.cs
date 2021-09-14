@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace RobotTR.User.API.Models
 {
-    public interface IUsersRepository : IRepository<User>
+    public interface IUsersRepository : IRepository<RobotTR.Core.Models.User>
     {
-        void Add(User user);
-        Task<IEnumerable<User>> GetAll();
-        Task<User> GetUserByUsername(string username);
+        void Add(RobotTR.Core.Models.User user);
+        Task<IEnumerable<RobotTR.Core.Models.User>> GetAll();
+        Task<RobotTR.Core.Models.User> GetUserByUsername(string username);
     }
 }

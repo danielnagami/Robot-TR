@@ -16,17 +16,17 @@ namespace RobotTR.User.API.Data
             _context = context;
         }
 
-        public void Add(Models.User user)
+        public void Add(RobotTR.Core.Models.User user)
         {
             _context.Add(user);
         }
 
-        public async Task<IEnumerable<Models.User>> GetAll()
+        public async Task<IEnumerable<RobotTR.Core.Models.User>> GetAll()
         {
             return await _context.Users.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Models.User> GetUserByUsername(string username)
+        public async Task<RobotTR.Core.Models.User> GetUserByUsername(string username)
         {
             return await _context.Users.FirstOrDefaultAsync(c => c.Username == username);
         }

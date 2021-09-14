@@ -4,22 +4,23 @@ using RobotTR.Core.Data;
 using RobotTR.Core.DomainObjects;
 using RobotTR.Core.Mediator;
 using RobotTR.Core.Messages;
+using RobotTR.Jobs.API.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RobotTR.User.API.Data
+namespace RobotTR.Jobs.API.Data
 {
-    public sealed class UsersContext : DbContext, IUnitOfWork
+    public class JobsContext : DbContext, IUnitOfWork
     {
+        public DbSet<Job> Jobs { get; set; }
         private readonly IMediatorHandler _mediatorHandler;
-        public UsersContext(DbContextOptions<UsersContext> options, IMediatorHandler mediatorHandler) : base(options)
+
+        public JobsContext(DbContextOptions<JobsContext> options, IMediatorHandler mediatorHandler) : base(options)
         {
             _mediatorHandler = mediatorHandler;
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
-
-        public DbSet<RobotTR.Core.Models.User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,7 +34,7 @@ namespace RobotTR.User.API.Data
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
                 relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(UsersContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(JobsContext).Assembly);
         }
 
         public async Task<bool> Commit()
