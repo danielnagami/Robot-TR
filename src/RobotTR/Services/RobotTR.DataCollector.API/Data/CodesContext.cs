@@ -36,7 +36,7 @@ namespace RobotTR.DataCollector.API.Data
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CodesContext).Assembly);
         }
 
-        public Task<bool> Commit()
+        public async Task<bool> Commit()
         {
             var success = await base.SaveChangesAsync() > 0;
 

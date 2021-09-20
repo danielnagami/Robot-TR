@@ -4,9 +4,9 @@ using RobotTR.Core.DomainObjects;
 
 namespace RobotTR.User.API.Data.Mappings
 {
-    public class UsersMapping : IEntityTypeConfiguration<Models.User>
+    public class UsersMapping : IEntityTypeConfiguration<RobotTR.Core.Models.User>
     {
-        public void Configure(EntityTypeBuilder<Models.User> builder)
+        public void Configure(EntityTypeBuilder<RobotTR.Core.Models.User> builder)
         {
             builder.HasKey(c => c.Id);
 

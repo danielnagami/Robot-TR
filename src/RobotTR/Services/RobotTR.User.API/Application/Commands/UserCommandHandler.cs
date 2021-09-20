@@ -22,7 +22,7 @@ namespace RobotTR.User.API.Application.Commands
         {
             if (!message.Valid()) return message.ValidationResult;
 
-            var cliente = new Models.User(message.Id, message.Nome, message.Username, message.Email, false, message.Empresa, message.Cargo);
+            var cliente = new RobotTR.Core.Models.User(message.Id, message.Nome, message.Username, message.Email, false, message.Empresa, message.Cargo);
 
             var clienteExitente = await _clienteRepository.GetUserByUsername(cliente.Username);
 
