@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,8 @@ namespace RobotTR.DataCollector.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAPIConfiguration(Configuration);
+
+            services.AddMediatR(typeof(Startup));
 
             services.AddControllers();
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RobotTR.DataCollector.API.Data.Repository
 {
-    public class CodesRepository
+    public class CodesRepository : ICodesRepository
     {
         private readonly CodesContext _context;
         public IUnitOfWork UnitOfWork => _context;
@@ -36,27 +36,26 @@ namespace RobotTR.DataCollector.API.Data.Repository
             return await _context.Codes.FirstOrDefaultAsync(x => x.Id == code.Id);
         }
 
-        public async Task<IList<Codes>> GetByUser(Guid ownerId)
+        public IList<Codes> GetByProjectId(Guid projectId)
         {
-            var query = from b in _context.Codes
-                        where b..Id.Equals(ownerId)
-                        select b;
+            var query = _context.Codes.Where(x => x.Id.Equals(projectId));
 
             return query.ToList();
-        }
-
-        public async Task<Codes> GetById(Guid jobId)
-        {
-            var query = from b in _context.Codes
-                        where b.Id.Equals(jobId)
-                        select b;
-
-            return query.FirstOrDefault();
         }
 
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+        public void DropProject(Guid projectId)
+        {
+            var classes = _context.Codes.Where(c => c.Id.Equals(projectId));
+
+            foreach (var item in classes)
+            {
+                _context.Codes.Remove(item);
+            }
         }
     }
 }

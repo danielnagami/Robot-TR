@@ -15,6 +15,14 @@ namespace RobotTR.DataCollector.API.Controllers
     public class UserController : MainController
     {
         private static List<RepositoryContent> _classes = new List<RepositoryContent>();
+        public ICodesRepository _repository { get; set; }
+
+        public UserController(ICodesRepository repository)
+        {
+            _repository = repository;
+        }
+
+
         [HttpGet("GetUsersRepositories")]
         public IActionResult GetUsersRepositories([FromQuery] string username)
         {
@@ -72,6 +80,7 @@ namespace RobotTR.DataCollector.API.Controllers
                 fileContent.content = decodedString;
 
                 _classes.Add(fileContent);
+                AddToDatabase(fileContent, repository);
             }
         }
 
@@ -85,6 +94,11 @@ namespace RobotTR.DataCollector.API.Controllers
         {
             string uri = string.IsNullOrEmpty(path) ? $"repos/{username}/{repository}/contents" : $"repos/{username}/{repository}/contents/{path}";
             return HTTPRequests.Request<RepositoryContent>(uri, Method.GET);
+        }
+
+        private void AddToDatabase(RepositoryContent repositoryContent, string projectName)
+        {
+            _repository.Add(new Codes(Guid.NewGuid(), projectName, repositoryContent.name, repositoryContent.content));
         }
     }
 }

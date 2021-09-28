@@ -1,4 +1,5 @@
 ﻿using RobotTR.Core.DomainObjects;
+using RobotTR.Core.Models;
 using System;
 
 namespace RobotTR.DataCollector.API.Models
@@ -13,9 +14,9 @@ namespace RobotTR.DataCollector.API.Models
             Content = content;
         }
         protected Codes() { }
-        public Guid Id { get; set; }
         public string Project { get; set; }
         public string Name { get; set; }
         public string Content { get; set; }
+        public User Owner { get; set; }
     }
 }

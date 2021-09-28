@@ -17,7 +17,7 @@ namespace RobotTR.DataCollector.API.Configuration
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Robot TR Authentication API",
+                    Title = "Robot TR Data Collector API",
                     Description = "This is the Data Collector API from Robot TR",
                     Contact = new OpenApiContact
                     {
