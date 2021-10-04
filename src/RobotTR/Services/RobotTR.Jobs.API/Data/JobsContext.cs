@@ -1,10 +1,14 @@
 ﻿using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RobotTR.Core.Data;
 using RobotTR.Core.DomainObjects;
 using RobotTR.Core.Mediator;
 using RobotTR.Core.Messages;
 using RobotTR.Jobs.API.Models;
+using RobotTR.Jobs.API.Utils;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,6 +30,19 @@ namespace RobotTR.Jobs.API.Data
         {
             modelBuilder.Ignore<ValidationResult>();
             modelBuilder.Ignore<Event>();
+
+            var languagesConverter = new EnumCollectionConverter<LanguagesEnum>();
+            var frameworksConverter = new EnumCollectionConverter<FrameworksEnum>();
+
+            modelBuilder
+              .Entity<Job>()
+              .Property(e => e.Languages)
+              .HasConversion(languagesConverter);
+
+            modelBuilder
+              .Entity<Job>()
+              .Property(e => e.Frameworks)
+              .HasConversion(frameworksConverter);
 
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                 e => e.GetProperties().Where(p => p.ClrType == typeof(string))))

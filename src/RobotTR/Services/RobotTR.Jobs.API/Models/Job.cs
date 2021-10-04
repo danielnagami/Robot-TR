@@ -1,5 +1,6 @@
 ﻿using RobotTR.Core.DomainObjects;
-using RobotTR.Core.Models;
+using System;
+using System.Collections.Generic;
 
 namespace RobotTR.Jobs.API.Models
 {
@@ -7,8 +8,8 @@ namespace RobotTR.Jobs.API.Models
     {
         public string Title { get; set; }
         public LevelEnum Level { get; set; }
-        public LanguagesEnum Languages { get; set; }
-        public FrameworksEnum Frameworks { get; set; }
-        public User Owner { get; set; }
+        public ICollection<LanguagesEnum> Languages { get; set; }
+        public ICollection<FrameworksEnum> Frameworks { get; set; }
+        public Guid OwnerId { get; set; }
     }
 }

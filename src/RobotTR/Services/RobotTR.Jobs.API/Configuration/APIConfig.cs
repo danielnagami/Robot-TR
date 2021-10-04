@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RobotTR.Core.Mediator;
 using RobotTR.Jobs.API.Data;
 using RobotTR.WebAPI.Core.Identity;
 

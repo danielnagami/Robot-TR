@@ -24,25 +24,25 @@ namespace RobotTR.Jobs.API.Data.Mapping
                 )
                 .IsUnicode(false);
 
-            builder.Property(c => c.Languages)
-                .HasMaxLength(20)
-                .HasConversion
-                (
-                    v => v.ToString(),
-                    v => (LanguagesEnum)Enum.Parse(typeof(LanguagesEnum), v)
-                )
-                .IsUnicode(false);
+            //builder.Property(c => c.Languages)
+            //    .HasMaxLength(20)
+            //    .HasConversion
+            //    (
+            //        v => v.ToString(),
+            //        v => (LanguagesEnum)Enum.Parse(typeof(LanguagesEnum), v)
+            //    )
+            //    .IsUnicode(false);
 
-            builder.Property(c => c.Frameworks)
-                .HasMaxLength(20)
-                .HasConversion
-                (
-                    v => v.ToString(),
-                    v => (FrameworksEnum)Enum.Parse(typeof(FrameworksEnum), v)
-                )
-                .IsUnicode(false);
+            //builder.Property(c => c.Frameworks)
+            //    .HasMaxLength(20)
+            //    .HasConversion
+            //    (
+            //        v => v.ToString(),
+            //        v => (FrameworksEnum)Enum.Parse(typeof(FrameworksEnum), v)
+            //    )
+            //    .IsUnicode(false);
 
-            builder.Property(c => c.Owner.Id)
+            builder.Property(c => c.OwnerId)
                 .IsRequired();
 
             builder.ToTable("Jobs");

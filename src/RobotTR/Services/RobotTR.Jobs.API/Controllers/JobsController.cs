@@ -16,9 +16,17 @@ namespace RobotTR.Jobs.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(Job job)
+        public async Task<IActionResult> Create(JobCreation job)
         {
-            _jobsRepository.Add(job);
+            _jobsRepository.Add(new Job() 
+            {
+                Id = Guid.NewGuid(),
+                Title = job.Title,
+                Level = job.Level,
+                Languages = job.Languages,
+                Frameworks = job.Frameworks,
+                OwnerId = job.OwnerId
+            });
 
             return CustomResponse();
         }

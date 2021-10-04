@@ -21,6 +21,7 @@ namespace RobotTR.Jobs.API.Data.Repository
         public void Add(Job job)
         {
             _context.Add(job);
+            _context.Commit();
         }
 
         public bool Delete(Job job)
@@ -39,7 +40,7 @@ namespace RobotTR.Jobs.API.Data.Repository
         public async Task<IList<Job>> GetByUser(Guid ownerId)
         {
             var query = from b in _context.Jobs
-                    where b.Owner.Id.Equals(ownerId)
+                    where b.OwnerId.Equals(ownerId)
                     select b;
 
             return query.ToList();
