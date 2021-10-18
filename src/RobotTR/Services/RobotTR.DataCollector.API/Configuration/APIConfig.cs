@@ -13,16 +13,18 @@ namespace RobotTR.DataCollector.API.Configuration
     {
         public static void AddAPIConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddControllers();
-
             services.AddDbContext<CodesContext>(options =>
                     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddControllers();
 
             services.AddMediatR(typeof(Startup));
 
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             services.AddScoped<ICodesRepository, CodesRepository>();
+
+            services.AddScoped<CodesContext>();
         }
     }
 }

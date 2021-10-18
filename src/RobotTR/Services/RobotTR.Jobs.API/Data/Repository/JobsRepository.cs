@@ -21,7 +21,6 @@ namespace RobotTR.Jobs.API.Data.Repository
         public void Add(Job job)
         {
             _context.Add(job);
-            _context.Commit();
         }
 
         public bool Delete(Job job)
@@ -34,6 +33,7 @@ namespace RobotTR.Jobs.API.Data.Repository
         public async Task<Job> Edit(Job job)
         {
             _context.Update(job);
+            await _context.Commit();
             return await _context.Jobs.FirstOrDefaultAsync(x => x.Id == job.Id);
         }
 

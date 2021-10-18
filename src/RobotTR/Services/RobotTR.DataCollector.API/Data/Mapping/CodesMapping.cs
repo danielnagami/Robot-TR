@@ -22,7 +22,7 @@ namespace RobotTR.DataCollector.API.Data.Mapping
                 .IsRequired()
                 .HasColumnType("varchar(MAX)");
 
-            builder.ToTable("Jobs");
+            builder.ToTable("Codes");
         }
     }
 }

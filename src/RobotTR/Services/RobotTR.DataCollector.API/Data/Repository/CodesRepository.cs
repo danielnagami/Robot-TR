@@ -21,6 +21,7 @@ namespace RobotTR.DataCollector.API.Data.Repository
         public void Add(Codes code)
         {
             _context.Add(code);
+            _context.SaveChanges();
         }
 
         public bool Delete(Codes code)
