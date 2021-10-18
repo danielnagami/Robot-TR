@@ -8,6 +8,6 @@ namespace RobotTR.DataCollector.API.Models
     {
         void Add(Codes code);
         IList<Codes> GetByProjectId(Guid projectId);
-        void DropProject(Guid projectId);
+        void DropProject(string name);
     }
 }

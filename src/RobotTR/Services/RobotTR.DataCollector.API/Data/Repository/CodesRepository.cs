@@ -49,14 +49,16 @@ namespace RobotTR.DataCollector.API.Data.Repository
             _context.Dispose();
         }
 
-        public void DropProject(Guid projectId)
+        public void DropProject(string name)
         {
-            var classes = _context.Codes.Where(c => c.Id.Equals(projectId));
+            var classes = _context.Codes.Where(c => c.Project.Equals(name));
 
             foreach (var item in classes)
             {
                 _context.Codes.Remove(item);
             }
+
+            _context.SaveChanges();
         }
     }
 }
