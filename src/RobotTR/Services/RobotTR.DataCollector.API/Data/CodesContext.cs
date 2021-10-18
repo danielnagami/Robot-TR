@@ -4,6 +4,7 @@ using RobotTR.Core.Data;
 using RobotTR.Core.DomainObjects;
 using RobotTR.Core.Mediator;
 using RobotTR.Core.Messages;
+using RobotTR.Core.Models;
 using RobotTR.DataCollector.API.Models;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace RobotTR.DataCollector.API.Data
         {
             modelBuilder.Ignore<ValidationResult>();
             modelBuilder.Ignore<Event>();
+            modelBuilder.Ignore<User>();
 
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                 e => e.GetProperties().Where(p => p.ClrType == typeof(string))))

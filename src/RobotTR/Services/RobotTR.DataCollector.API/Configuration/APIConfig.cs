@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RobotTR.Core.Mediator;
@@ -12,9 +13,13 @@ namespace RobotTR.DataCollector.API.Configuration
     {
         public static void AddAPIConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddControllers();
+
             services.AddDbContext<CodesContext>(options =>
                     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            
+
+            services.AddMediatR(typeof(Startup));
+
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             services.AddScoped<ICodesRepository, CodesRepository>();

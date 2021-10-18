@@ -31,10 +31,6 @@ namespace RobotTR.DataCollector.API
         {
             services.AddAPIConfiguration(Configuration);
 
-            services.AddMediatR(typeof(Startup));
-
-            services.AddControllers();
-
             services.AddSwaggerConfiguration(Configuration);
         }
 
