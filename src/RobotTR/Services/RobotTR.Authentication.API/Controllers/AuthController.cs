@@ -164,7 +164,8 @@ namespace RobotTR.Authentication.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(userRegister.Email);
 
-            var userRegistered = new UserRegisterIntegrationEvent(Guid.Parse(user.Id), userRegister.Nome, userRegister.Username, userRegister.Email, userRegister.Empresa, userRegister.Cargo);
+            var userRegistered = new UserRegisterIntegrationEvent(
+                Guid.Parse(user.Id), userRegister.Nome, userRegister.Username, userRegister.Email, userRegister.Empresa, userRegister.Cargo);
 
             try
             {

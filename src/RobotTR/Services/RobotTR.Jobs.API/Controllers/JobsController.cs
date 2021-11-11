@@ -31,7 +31,7 @@ namespace RobotTR.Jobs.API.Controllers
             return CustomResponse();
         }
 
-        [HttpPost("ReadAllByUser")]
+        [HttpGet("ReadAllByUser")]
         public async Task<IActionResult> ReadAllByUser(Guid ownerId)
         {
             var jobs = await _jobsRepository.GetByUser(ownerId);

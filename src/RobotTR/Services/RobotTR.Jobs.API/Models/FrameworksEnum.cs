@@ -3,9 +3,7 @@
     public enum FrameworksEnum
     {
         Angular = 0,
-        Vue = 1,
-        React = 2,
-        Node = 3,
-        Bootstrap = 4
+        React = 1,
+        Node = 2
     }
 }

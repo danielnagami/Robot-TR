@@ -28,7 +28,8 @@ namespace RobotTR.User.API.Data
 
         public async Task<RobotTR.Core.Models.User> GetUserByUsername(string username)
         {
-            return await _context.Users.FirstOrDefaultAsync(c => c.Username == username);
+            var user = await _context.Users.FirstOrDefaultAsync(c => c.Username == username);
+            return user;
         }
 
         public void Dispose()

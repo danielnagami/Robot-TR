@@ -1,0 +1,27 @@
+﻿@model RobotTR.Portal.MVC.Models.AnalyzerRequestViewModel
+
+@{
+    ViewData["Title"] = "RobotTR | Analisador";
+}
+
+<h1>Analisador</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GetResult">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ExperienceYears" class="control-label">Anos de Experiência:</label>
+                <input asp-for="ExperienceYears" class="form-control" />
+                <br />
+                <label asp-for="GithubUsername" class="control-label">Usuário do Github:</label>
+                <input asp-for="GithubUsername" class="form-control" />
+                <span asp-validation-for="GithubUsername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Analisar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

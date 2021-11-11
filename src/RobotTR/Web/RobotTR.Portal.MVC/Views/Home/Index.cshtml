@@ -1,8 +1,21 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using RobotTR.Portal.MVC.Extensions
+@using RobotTR.WebAPI.Core.User
+
+@inject IAspNetUser AppUser
+
+
+@{
+    ViewData["Title"] = "RobotTR";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @*@if (AppUser.IsAuthenticated())
+        {
+            <h1 class="display-4">Bem vindo, @AppUser.Name!</h1>
+        }
+        else
+        {
+            <h1 class="display-4">Bem vindo!</h1>
+        }*@
+    <h1 class="display-4">Bem vindo!</h1>
 </div>

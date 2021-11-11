@@ -1,0 +1,54 @@
+﻿@model RobotTR.Portal.MVC.Models.JobViewModel
+
+@{
+    ViewData["Title"] = "RobotTR | Criar Vaga";
+}
+
+<h1>Criar Vaga</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Título da vaga:</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Level" class="control-label">Nível:</label>
+                <input asp-for="Level" class="form-control" />
+                <span asp-validation-for="Level" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="OwnerId" class="control-label"></label>
+                <input asp-for="OwnerId" class="form-control" />
+                <span asp-validation-for="OwnerId" class="text-danger"></span>
+            </div>*@
+            @*            <div class="form-group">*@
+            <label asp-for="Languages" class="control-label">Linguagens:</label>
+            <br />
+
+            <select asp-for="Languages"
+                    asp-items="@ViewBag.Languages"></select>
+            <span asp-validation-for="Languages" class="text-danger"></span>
+            <br />
+            @*</div>
+        <div class="form-group">*@
+            <label asp-for="Frameworks" class="control-label">Frameworks:</label>
+            <br />
+            <select asp-for="Frameworks"
+                    asp-items="@ViewBag.Frameworks"></select>
+            <span asp-validation-for="Frameworks" class="text-danger"></span>
+            @*</div>*@
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RobotTR.Portal.MVC.Models.JobViewModel>
+
+@{
+    ViewData["Title"] = "RobotTR | Vagas";
+}
+
+<h1>Vagas</h1>
+
+<p>
+    <a asp-action="Create">Criar Vaga</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Título da vaga
+            </th>
+            <th>
+                Nível
+            </th>
+            <th>
+                Criador
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerId)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Detalhes", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
