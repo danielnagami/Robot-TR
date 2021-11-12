@@ -17,7 +17,7 @@ namespace RobotTR.Jobs.API.Configuration
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Robot TR Jobs API",
-                    Description = "This is the User's API from Robot TR",
+                    Description = "This is the Job's API from Robot TR",
                     Contact = new OpenApiContact
                     {
                         Name = "Daniel Nagami",

@@ -18,14 +18,16 @@ namespace RobotTR.Jobs.API.Data.Repository
             _context = context;
         }
 
-        public void Add(Job job)
+        public async Task Add(Job job)
         {
-            _context.Add(job);
+            await _context.AddAsync(job);
+            await _context.SaveChangesAsync();
         }
 
-        public bool Delete(Job job)
+        public async Task<bool> Delete(Job job)
         {
-            _context.Remove(job);
+            _context.Jobs.Remove(job);
+            await _context.SaveChangesAsync();
 
             return true;
         }
@@ -39,20 +41,12 @@ namespace RobotTR.Jobs.API.Data.Repository
 
         public async Task<IList<Job>> GetByUser(Guid ownerId)
         {
-            var query = from b in _context.Jobs
-                    where b.OwnerId.Equals(ownerId)
-                    select b;
-
-            return query.ToList();
+            return  _context.Jobs.Where(j => j.OwnerId == ownerId).ToList();
         }
 
         public async Task<Job> GetById(Guid jobId)
         {
-            var query = from b in _context.Jobs
-                        where b.Id.Equals(jobId)
-                        select b;
-
-            return query.FirstOrDefault();
+            return await _context.Jobs.FirstOrDefaultAsync(j => j.Id == jobId);
         }
 
         public void Dispose()

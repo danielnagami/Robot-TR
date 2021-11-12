@@ -18,7 +18,7 @@ namespace RobotTR.Jobs.API.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Create(JobCreation job)
         {
-            _jobsRepository.Add(new Job() 
+            await _jobsRepository.Add(new Job() 
             {
                 Id = Guid.NewGuid(),
                 Title = job.Title,
@@ -38,18 +38,18 @@ namespace RobotTR.Jobs.API.Controllers
             return CustomResponse(jobs);
         }
 
-        [HttpPost("Update")]
+        [HttpPut("Update")]
         public async Task<IActionResult> Update(Job job)
         {
             var newJob = await _jobsRepository.Edit(job);
             return CustomResponse(newJob);
         }
 
-        [HttpPost("Delete")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(Guid jobId)
         {
-            var job = _jobsRepository.GetById(jobId);
-            var response = _jobsRepository.Delete(job.Result);
+            var job = await _jobsRepository.GetById(jobId);
+            var response = await _jobsRepository.Delete(job);
             return CustomResponse(response);
         }
     }
