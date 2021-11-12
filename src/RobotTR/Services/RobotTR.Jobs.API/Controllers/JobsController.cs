@@ -1,18 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RobotTR.Jobs.API.Models;
 using RobotTR.WebAPI.Core.Controllers;
+using RobotTR.WebAPI.Core.User;
+
 using System;
 using System.Threading.Tasks;
 
 namespace RobotTR.Jobs.API.Controllers
 {
-    [Route("api/Jobs")]
+    [Authorize, Route("api/Jobs")]
     public class JobsController : MainController
     {
         private IJobsRepository _jobsRepository;
-        public JobsController(IJobsRepository jobsRepository)
+        private IAspNetUser _aspNetUser;
+        public JobsController(IJobsRepository jobsRepository, IAspNetUser aspNetUser)
         {
             _jobsRepository = jobsRepository;
+            _aspNetUser = aspNetUser;
         }
 
         [HttpPost("Create")]
@@ -25,22 +30,23 @@ namespace RobotTR.Jobs.API.Controllers
                 Level = job.Level,
                 Languages = job.Languages,
                 Frameworks = job.Frameworks,
-                OwnerId = job.OwnerId
+                OwnerId = _aspNetUser.GetUserId()
             });
 
             return CustomResponse();
         }
 
         [HttpGet("ReadAllByUser")]
-        public async Task<IActionResult> ReadAllByUser(Guid ownerId)
+        public async Task<IActionResult> ReadAllByUser()
         {
-            var jobs = await _jobsRepository.GetByUser(ownerId);
+            var jobs = await _jobsRepository.GetByUser(_aspNetUser.GetUserId());
             return CustomResponse(jobs);
         }
 
         [HttpPut("Update")]
         public async Task<IActionResult> Update(Job job)
         {
+            job.OwnerId = _aspNetUser.GetUserId();
             var newJob = await _jobsRepository.Edit(job);
             return CustomResponse(newJob);
         }
