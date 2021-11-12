@@ -25,29 +25,6 @@ namespace RobotTR.Portal.MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var jobsList = new List<JobViewModel>()
-            //{
-            //    { new JobViewModel()
-            //    {
-            //        Title = "Desenvolvedor .NET",
-            //        Level = LevelEnum.Senior,
-            //        OwnerId = Guid.NewGuid(),
-            //        Languages = new List<LanguagesEnum>{{LanguagesEnum.CSharp}},
-            //        Frameworks = new List<FrameworksEnum>{{FrameworksEnum.Angular}}
-
-            //    } },
-
-            //                    { new JobViewModel()
-            //    {
-            //        Title = "Desenvolvedor React",
-            //        Level = LevelEnum.Middle,
-            //        OwnerId = Guid.NewGuid(),
-            //        Languages = new List<LanguagesEnum>{{LanguagesEnum.JavaScript}},
-            //        Frameworks = new List<FrameworksEnum>{{FrameworksEnum.React}}
-
-            //    } },
-            //};
-
             var jobsList = await _jobsService.GetJobs(_aspNetUser.GetUserId());
             jobsList.ToList().ForEach(j => j.Owner = _aspNetUser.GetUserName());
             return View("Index", jobsList);
@@ -74,8 +51,10 @@ namespace RobotTR.Portal.MVC.Controllers
         }
 
         [HttpPost, Route("Create")]
-        public IActionResult Create([FromForm]JobViewModel body)
+        public async Task<IActionResult> Create([FromForm]JobViewModel body)
         {
+            await _jobsService.Create(body);
+
             return View("Index");
         }
     }
