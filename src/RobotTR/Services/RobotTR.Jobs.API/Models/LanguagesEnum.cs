@@ -3,7 +3,6 @@
     public enum LanguagesEnum
     {
         CSharp = 0,
-        JavaScript = 1,
-        Python = 2
+        Java = 1,
     }
 }
