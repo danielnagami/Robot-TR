@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RobotTR.Portal.MVC.Models
 {
@@ -12,6 +10,7 @@ namespace RobotTR.Portal.MVC.Models
         public ICollection<LanguagesEnum> Languages { get; set; }
         public ICollection<FrameworksEnum> Frameworks { get; set; }
         public Guid OwnerId { get; set; }
+        public string Owner { get; set; }
     }
 
     public enum LanguagesEnum

@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RobotTR.Portal.MVC.Extensions;
 using RobotTR.Portal.MVC.Models;
+using RobotTR.WebAPI.Core.Identity;
+
 using System.Globalization;
 
 namespace RobotTR.Portal.MVC.Configuration
@@ -15,7 +17,18 @@ namespace RobotTR.Portal.MVC.Configuration
         {
             services.AddControllersWithViews();
 
-            services.Configure<AppSettings>(configuration);
+            services.Configure<Models.AppSettings>(configuration);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Total",
+                    builder =>
+                    builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    );
+            });
         }
         public static void UseMVCConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -28,7 +41,9 @@ namespace RobotTR.Portal.MVC.Configuration
 
             app.UseRouting();
 
-            app.UseIdentityConfiguration();
+            app.UseAuthConfiguration();
+
+            app.UseCors("Total");
 
             var supportedCultures = new[] { new CultureInfo("pt-BR") };
             _ = app.UseRequestLocalization(new RequestLocalizationOptions

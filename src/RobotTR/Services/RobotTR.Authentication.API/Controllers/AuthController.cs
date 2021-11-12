@@ -44,7 +44,7 @@ namespace RobotTR.Authentication.API.Controllers
 
             var user = new IdentityUser
             {
-                UserName = userRegister.Email,
+                UserName = userRegister.Username,
                 Email = userRegister.Email,
                 EmailConfirmed = true
             };
@@ -119,6 +119,8 @@ namespace RobotTR.Authentication.API.Controllers
             {
                 claims.Add(new Claim("role", userRole));
             }
+
+            claims.Add(new Claim("Username", user.UserName));
 
             var identityClaims = new ClaimsIdentity();
             identityClaims.AddClaims(claims);

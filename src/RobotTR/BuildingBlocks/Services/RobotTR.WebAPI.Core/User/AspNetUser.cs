@@ -26,6 +26,11 @@ namespace RobotTR.WebAPI.Core.User
             return IsAuthenticated() ? _accessor.HttpContext.User.GetUserEmail() : "";
         }
 
+        public string GetUserName()
+        {
+            return IsAuthenticated() ? _accessor.HttpContext.User.GetUserName() : "";
+        }
+
         public string GetUserToken()
         {
             return IsAuthenticated() ? _accessor.HttpContext.User.GetUserToken() : "";

@@ -13,6 +13,9 @@ namespace RobotTR.WebAPI.Core.User
             }
 
             var claim = principal.FindFirst(ClaimTypes.NameIdentifier);
+            if (claim == null)
+                claim = principal.FindFirst("UserId");
+
             return claim?.Value;
         }
 
@@ -35,6 +38,17 @@ namespace RobotTR.WebAPI.Core.User
             }
 
             var claim = principal.FindFirst("JWT");
+            return claim?.Value;
+        }
+
+        public static string GetUserName(this ClaimsPrincipal principal)
+        {
+            if (principal == null)
+            {
+                throw new ArgumentException(nameof(principal));
+            }
+
+            var claim = principal.FindFirst("Username");
             return claim?.Value;
         }
     }

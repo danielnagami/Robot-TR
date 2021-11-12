@@ -10,6 +10,7 @@ namespace RobotTR.WebAPI.Core.User
         string Name { get; }
         Guid GetUserId();
         string GetUserEmail();
+        string GetUserName();
         string GetUserToken();
         bool IsAuthenticated();
         bool HasRole(string role);

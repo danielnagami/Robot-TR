@@ -23,9 +23,20 @@ namespace RobotTR.Portal.MVC.Services
         {
             return new List<FrameworksEnum>()
             { 
-                FrameworksEnum.Angular, 
-                FrameworksEnum.Node, 
-                FrameworksEnum.React 
+                FrameworksEnum.ASPNETCore, 
+                FrameworksEnum.ASPNETMVC, 
+                FrameworksEnum.Dapper, 
+                FrameworksEnum.EntityFramework, 
+                FrameworksEnum.GWT, 
+                FrameworksEnum.Hibernate, 
+                FrameworksEnum.Http, 
+                FrameworksEnum.Kafka, 
+                FrameworksEnum.NHibernate, 
+                FrameworksEnum.Play, 
+                FrameworksEnum.RabbitMQ, 
+                FrameworksEnum.Spark, 
+                FrameworksEnum.Spring,
+                FrameworksEnum.Struts
             };
         }
 
@@ -44,9 +55,7 @@ namespace RobotTR.Portal.MVC.Services
             return new List<LanguagesEnum>()
             {
                 LanguagesEnum.CSharp,
-                LanguagesEnum.JavaScript,
-                LanguagesEnum.HTML,
-                LanguagesEnum.CSS
+                LanguagesEnum.Java
             };
         }
     }

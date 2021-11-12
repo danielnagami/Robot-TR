@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RobotTR.Portal.MVC.Configuration;
+using RobotTR.WebAPI.Core.Identity;
 
 namespace RobotTR.Portal.MVC
 {
