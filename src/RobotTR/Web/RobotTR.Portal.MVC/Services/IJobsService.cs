@@ -11,5 +11,8 @@ namespace RobotTR.Portal.MVC.Services
         IList<LanguagesEnum> GetLanguages();
         IList<FrameworksEnum> GetFrameworks();
         Task Create(JobViewModel job);
+        Task Delete(Guid jobId);
+        Task Edit(JobViewModel job);
+        Task<JobViewModel> Read(Guid jobId);
     }
 }

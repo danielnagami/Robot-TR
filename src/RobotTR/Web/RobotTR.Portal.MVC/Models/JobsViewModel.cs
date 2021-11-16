@@ -5,6 +5,7 @@ namespace RobotTR.Portal.MVC.Models
 {
     public class JobViewModel
     {
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public LevelEnum Level { get; set; }
         public ICollection<LanguagesEnum> Languages { get; set; }

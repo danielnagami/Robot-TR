@@ -5,6 +5,7 @@ using RobotTR.WebAPI.Core.Controllers;
 using RobotTR.WebAPI.Core.User;
 
 using System;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace RobotTR.Jobs.API.Controllers
@@ -43,20 +44,25 @@ namespace RobotTR.Jobs.API.Controllers
             return CustomResponse(jobs);
         }
 
-        [HttpPut("Update")]
-        public async Task<IActionResult> Update(Job job)
-        {
-            job.OwnerId = _aspNetUser.GetUserId();
-            var newJob = await _jobsRepository.Edit(job);
-            return CustomResponse(newJob);
-        }
+//        [HttpGet("Read")]
+//        public async Task<IActionResult> Read(Guid jobId)
+//        {
+//            var jobs = await _jobsRepository.GetById(jobId);
+//            return CustomResponse(jobs);
+//        }
 
-        [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete(Guid jobId)
-        {
-            var job = await _jobsRepository.GetById(jobId);
-            var response = await _jobsRepository.Delete(job);
-            return CustomResponse(response);
-        }
+//        [HttpPut("Update")]
+//        public async Task<IActionResult> Update(Job job)
+//{
+//            var jobs = await _jobsRepository.Edit(job);
+//            return CustomResponse(jobs);
+//        }
+
+//        [HttpDelete("Delete")]
+//        public async Task<IActionResult> Delete(Guid jobId)
+//        {
+//            var jobs = await _jobsRepository.Delete(jobId);
+//            return CustomResponse(jobs);
+//        }
     }
 }

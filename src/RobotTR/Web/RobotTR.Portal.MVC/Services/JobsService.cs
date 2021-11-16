@@ -29,6 +29,35 @@ namespace RobotTR.Portal.MVC.Services
             TreatErrors(response);
         }
 
+        public async Task Delete(Guid jobId)
+        {
+            await _httpClient.DeleteAsync($"/api/jobs/Delete?jobId={jobId}");
+        }
+
+        public async Task Edit(JobViewModel job)
+        {
+            await _httpClient.PutAsync($"/api/jobs/Update",
+                                        new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json"));
+        }
+
+        public async Task<JobViewModel> Read(Guid jobId)
+        {
+            var response = await _httpClient.GetAsync($"/api/jobs/Readr?jobId={jobId}");
+
+            TreatErrors(response);
+
+            return await DeserializeResponse<JobViewModel>(response);
+        }
+
+        public async Task<IEnumerable<JobViewModel>> GetJobs(Guid ownerId)
+        {
+            var response = await _httpClient.GetAsync($"/api/jobs/ReadAllByUser?ownerId={ownerId}");
+
+            TreatErrors(response);
+
+            return await DeserializeResponse<IEnumerable<JobViewModel>>(response);
+        }
+
         public IList<FrameworksEnum> GetFrameworks()
         {
             return new List<FrameworksEnum>()
@@ -48,16 +77,6 @@ namespace RobotTR.Portal.MVC.Services
                 FrameworksEnum.Spring,
                 FrameworksEnum.Struts
             };
-        }
-
-        public async Task<IEnumerable<JobViewModel>> GetJobs(Guid ownerId)
-        {
-            var response = await _httpClient.GetAsync($"/api/jobs/ReadAllByUser?ownerId={ownerId}");
-
-            TreatErrors(response);
-
-            return await DeserializeResponse<IEnumerable<JobViewModel>>(response);
-            
         }
 
         public IList<LanguagesEnum> GetLanguages()

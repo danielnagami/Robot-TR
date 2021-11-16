@@ -7,10 +7,10 @@ namespace RobotTR.DataAnalyzer.API.Controllers
     [Authorize, Route("api/Analyzer")]
     public class AnalyzerController : MainController
     {
-        [HttpGet("Anayze")]
-        public IActionResult Analyze(string username)
-        {
+        //[HttpGet("Anayze")]
+        //public IActionResult Analyze(string username)
+        //{
 
-        }
+        //}
     }
 }
