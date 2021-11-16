@@ -1,6 +1,6 @@
-﻿namespace RobotTR.DataCollector.API.Models
+﻿namespace RobotTR.DataAnalyzer.API.Models
 {
-    public class RepositoryContent
+    public class RepositoryContentViewModel
     {
         public string name { get; set; }
         public string path { get; set; }
@@ -15,7 +15,6 @@
         public string encoding { get; set; }
         public _Links _links { get; set; }
     }
-
     public class _Links
     {
         public string self { get; set; }
