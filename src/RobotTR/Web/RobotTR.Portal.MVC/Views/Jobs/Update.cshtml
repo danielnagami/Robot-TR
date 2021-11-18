@@ -4,23 +4,30 @@
     ViewData["Title"] = "RobotTR | Editar";
 }
 
-<h1>Update</h1>
+<h1>Editar vaga</h1>
 
-<h4>JobViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Update">
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Id" class="form-control" hidden value=@Model.Id />
+            </div>
+            <div class="form-group">
+                <input asp-for="OwnerId" class="form-control" hidden value=@Model.OwnerId />
+            </div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label">Título: </label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Level" class="control-label"></label>
-                <input asp-for="Level" class="form-control" />
-                <span asp-validation-for="Level" class="text-danger"></span>
+                <label asp-for="Level" class="control-label">Nível:</label>
+                <br/>
+                <select asp-for="Level" asp-items="Html.GetEnumSelectList<LevelEnum>()">
+                    <option selected=@Model.Level value="">Selecione um nível</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Languages" class="control-label">Linguagens:</label>
@@ -41,18 +48,13 @@
                 <span asp-validation-for="Frameworks" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Owner" class="control-label"></label>
-                <input asp-for="Owner" class="form-control" />
-                <span asp-validation-for="Owner" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar para lista de vagas</a>
 </div>
 

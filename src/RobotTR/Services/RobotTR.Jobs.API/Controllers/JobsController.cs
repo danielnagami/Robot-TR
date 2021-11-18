@@ -44,25 +44,25 @@ namespace RobotTR.Jobs.API.Controllers
             return CustomResponse(jobs);
         }
 
-//        [HttpGet("Read")]
-//        public async Task<IActionResult> Read(Guid jobId)
-//        {
-//            var jobs = await _jobsRepository.GetById(jobId);
-//            return CustomResponse(jobs);
-//        }
+        [HttpGet("Read")]
+        public async Task<IActionResult> Read(Guid jobId)
+        {
+            var jobs = await _jobsRepository.GetById(jobId);
+            return CustomResponse(jobs);
+        }
 
-//        [HttpPut("Update")]
-//        public async Task<IActionResult> Update(Job job)
-//{
-//            var jobs = await _jobsRepository.Edit(job);
-//            return CustomResponse(jobs);
-//        }
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(Job job)
+{
+            var jobs = await _jobsRepository.Edit(job);
+            return CustomResponse(jobs);
+        }
 
-//        [HttpDelete("Delete")]
-//        public async Task<IActionResult> Delete(Guid jobId)
-//        {
-//            var jobs = await _jobsRepository.Delete(jobId);
-//            return CustomResponse(jobs);
-//        }
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete(Guid jobId)
+        {
+            var jobs = await _jobsRepository.Delete(jobId);
+            return CustomResponse(jobs);
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace RobotTR.Portal.MVC.Services
 
         public async Task<JobViewModel> Read(Guid jobId)
         {
-            var response = await _httpClient.GetAsync($"/api/jobs/Readr?jobId={jobId}");
+            var response = await _httpClient.GetAsync($"/api/jobs/Read?jobId={jobId}");
 
             TreatErrors(response);
 

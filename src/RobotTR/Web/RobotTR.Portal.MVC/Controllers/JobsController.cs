@@ -62,15 +62,18 @@ namespace RobotTR.Portal.MVC.Controllers
         }
 
         [HttpGet("Read")]
-        public async Task<IActionResult> Read(Guid jobId)
+        public async Task<IActionResult> Read([FromQuery] Guid jobId)
         {
             var job = await _jobsService.Read(jobId);
-            return View("Read", job);
+            
+            return View(job);
         }
 
         [HttpGet("Update")]
-        public IActionResult Update()
+        public async Task<IActionResult> Update(Guid jobId)
         {
+            var job =  await _jobsService.Read(jobId);
+
             ViewBag.Languages = _jobsService.GetLanguages()
                 .Select(c => new SelectListItem()
                 {
@@ -85,17 +88,17 @@ namespace RobotTR.Portal.MVC.Controllers
                     Value = c.ToString()
                 }).ToList();
 
-            return View();
+            return View(job);
         }
 
-        [HttpPut("Update")]
-        public async Task<IActionResult> Edit(JobViewModel job)
+        [HttpPost("Update")]
+        public async Task<IActionResult> Update([FromForm] JobViewModel job)
         {
             await _jobsService.Edit(job);
             return RedirectToAction("Index");
         }
 
-        [HttpDelete("Delete")]
+        [HttpGet("Delete")]
         public async Task<IActionResult> Delete(Guid jobId)
         {
             await _jobsService.Delete(jobId);

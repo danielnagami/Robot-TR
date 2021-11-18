@@ -11,6 +11,6 @@ namespace RobotTR.Jobs.API.Models
         Task<IList<Job>> GetByUser(Guid ownerId);
         Task<Job> GetById(Guid jobId);
         Task<Job> Edit(Job job);
-        Task<bool> Delete(Job job);
+        Task<bool> Delete(Guid jobId);
     }
 }

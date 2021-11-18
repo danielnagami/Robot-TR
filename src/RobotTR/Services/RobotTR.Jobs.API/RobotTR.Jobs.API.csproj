@@ -18,9 +18,5 @@
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\Services\RobotTR.WebAPI.Core\RobotTR.WebAPI.Core.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Views\Jobs\" />
-  </ItemGroup>
 
 </Project>

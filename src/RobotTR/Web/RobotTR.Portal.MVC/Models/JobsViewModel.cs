@@ -44,4 +44,10 @@ namespace RobotTR.Portal.MVC.Models
         Spark = 12,
         GWT = 13
     }
+
+    public class JobUpdate : JobViewModel
+    {
+        public IEnumerable<LanguagesEnum> AvailableLanguages { get; set; }
+        public IEnumerable<FrameworksEnum> AvailableFrameworks { get; set; }
+    }
 }
