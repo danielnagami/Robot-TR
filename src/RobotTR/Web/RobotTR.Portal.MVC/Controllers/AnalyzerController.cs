@@ -1,6 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 using RobotTR.Portal.MVC.Models;
+using RobotTR.Portal.MVC.Services;
 using RobotTR.WebAPI.Core.Controllers;
+using RobotTR.WebAPI.Core.User;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +16,26 @@ namespace RobotTR.Portal.MVC.Controllers
     [Route("[controller]")]
     public class AnalyzerController : MainController
     {
-        [HttpGet]
-        public IActionResult Index(string returnUrl = null)
+        public IJobsService _jobsService { get; set; }
+        public IAspNetUser _aspNetUser { get; set; }
+
+        public AnalyzerController(IJobsService jobsService, IAspNetUser aspNetUser)
         {
-            return View("GetResult");
+            _jobsService = jobsService;
+            _aspNetUser = aspNetUser;
         }
 
-        //[HttpPost("GetResult")]
-        //public IActionResult GetResult([FromForm]AnalyzerRequestViewModel body)
-        //{
-        //    return RedirectToAction("Result", "Analyzer");
-        //}
+        [HttpGet]
+        public async Task<IActionResult> Index(string returnUrl = null)
+        {
+            var jobs = await _jobsService.GetJobs(_aspNetUser.GetUserId());
+            var jobsList = jobs.ToList();
+
+            ViewBag.Jobs = jobsList.Select(c => new SelectListItem()
+            { Text = c.Title, Value = c.Id.ToString() }).ToList();
+
+            return View("GetResult");
+        }
 
         [HttpPost("GetResult")]
         public IActionResult GetResult([FromForm] AnalyzerRequestViewModel body)
@@ -33,6 +47,5 @@ namespace RobotTR.Portal.MVC.Controllers
             };
             return View("Result", analyzedResult);
         }
-
     }
 }
