@@ -1,7 +1,7 @@
 ﻿@model RobotTR.Portal.MVC.Models.JobViewModel
 
 @{
-    ViewData["Title"] = "RobotTR | Criar Vaga";
+    ViewData["Title"] = "RoboTR | Criar Vaga";
 }
 
 <h1>Criar Vaga</h1>
@@ -42,12 +42,12 @@
                 <span asp-validation-for="Frameworks" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary">Criar</button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar para lista de vagas</a>
 </div>
