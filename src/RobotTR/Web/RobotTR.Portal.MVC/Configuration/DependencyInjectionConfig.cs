@@ -29,6 +29,18 @@ namespace RobotTR.Portal.MVC.Configuration
                     .AddPolicyHandler(PollyExtensions.WaitTry())
                     .AddTransientHttpErrorPolicy(
                         p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
+
+            services.AddHttpClient<IDCService, DCService>()
+                    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
+                    .AddPolicyHandler(PollyExtensions.WaitTry())
+                    .AddTransientHttpErrorPolicy(
+                        p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
+
+            services.AddHttpClient<IDAService, DAService>()
+                    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
+                    .AddPolicyHandler(PollyExtensions.WaitTry())
+                    .AddTransientHttpErrorPolicy(
+                        p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
         }
     }
 }

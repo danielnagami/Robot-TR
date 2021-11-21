@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RobotTR.Portal.MVC.Models
 {
-    public class AnalyzerResultViewModel
+    public class AnalyzerResponseViewModel
     {
         public string Message { get; set; }
-        public string Score { get; set; }
+        public int Score { get; set; }
     }
 
     public class AnalyzerRequestViewModel

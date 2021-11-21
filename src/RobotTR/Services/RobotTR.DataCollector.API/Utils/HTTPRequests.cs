@@ -11,7 +11,14 @@ namespace RobotTR.DataCollector.API.Utils
             var request = new RestRequest(method);
             request.AddHeader("Authorization", "Bearer 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");
             IRestResponse response = client.Execute(request);
-            return JsonConvert.DeserializeObject<T>(response.Content);
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(response.Content);
+            }
+            catch
+            {
+                return default(T);
+            }
         }
     }
 }

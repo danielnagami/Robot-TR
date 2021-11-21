@@ -6,4 +6,10 @@
         public int ExperienceYears { get; set; }
         public string GithubUsername { get; set; }
     }
+
+    public class AnalyzerResponseViewModel
+    {
+        public int Score { get; set; }
+        public string Message { get; set; }
+    }
 }

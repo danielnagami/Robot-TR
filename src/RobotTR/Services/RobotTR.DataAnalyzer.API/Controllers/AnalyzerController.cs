@@ -5,14 +5,19 @@ using RobotTR.WebAPI.Core.Controllers;
 
 namespace RobotTR.DataAnalyzer.API.Controllers
 {
-    [Authorize, Route("api/Analyzer")]
+    [Route("api/Analyzer")]
     public class AnalyzerController : MainController
     {
-        [HttpGet("Anayze")]
+        [HttpPost("Analyze")]
         public IActionResult Analyze(AnalyzerRequestViewModel body)
         {
+            var mock = new AnalyzerResponseViewModel
+            {
+                Score = 800,
+                Message = "O perfil do candidato corresponde com o nível de Sênior."
+            };
 
-            return Ok();
+            return CustomResponse(mock);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace RobotTR.DataCollector.API.Controllers
 
         private List<string> GetRepositories(string username)
         {
-            var result = HTTPRequests.Request<Repository[]>($"users/{username}/repos", Method.GET);
+            var result = HTTPRequests.Request<Repository[]>($"users/{username}/repos?sort=updated&per_page=5&page=1", Method.GET);
 
             var repositories = new List<string>();
 
@@ -65,9 +65,12 @@ namespace RobotTR.DataCollector.API.Controllers
             {
                 var newContent = RepositoryContent(username, repository, path.path);
 
-                foreach (var item in newContent)
+                if(newContent != null)
                 {
-                    GetRecursive(item, username, repository);
+                    foreach (var item in newContent)
+                    {
+                        GetRecursive(item, username, repository);
+                    }
                 }
             }
             else if(path.type.Equals("file") && path.name.EndsWith(".cs"))
