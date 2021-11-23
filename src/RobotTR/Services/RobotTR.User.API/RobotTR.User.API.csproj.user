@@ -2,5 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>Docker (1)</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Studies\UNIP\8 Semestre\TCC\Project\src\RobotTR\Services\RobotTR.User.API\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
