@@ -5,8 +5,8 @@ namespace RobotTR.Portal.MVC.Models
 {
     public class AnalyzerResponseViewModel
     {
-        public string Message { get; set; }
-        public int Score { get; set; }
+        public string Mensagem { get; set; }
+        public float Score { get; set; }
     }
 
     public class AnalyzerRequestViewModel

@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label asp-for="Job" class="control-label">Vaga proposta:</label>
                 <br />
-                <select asp-for="Job" asp-items="@ViewBag.Jobs">
+                <select asp-for="Job" id="jobsSelect" class="form-control" asp-items="@ViewBag.Jobs">
                     <option selected="selected" value="">Selecione uma vaga</option>
                 </select>
                 <span asp-validation-for="Job" class="text-danger"></span>
@@ -36,4 +36,12 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#jobsSelect").select2();
+        });
+    </script>
 }

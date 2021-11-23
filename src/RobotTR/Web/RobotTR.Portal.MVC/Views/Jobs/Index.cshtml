@@ -6,9 +6,10 @@
 
 <h1>Vagas</h1>
 
-<p>
-    <a asp-action="Create">Criar Vaga</a>
-</p>
+<div>
+    <input type="button" class="btn btn-primary" value="Criar Vaga" onclick="@("window.location.href='" + @Url.Action("Create", "Jobs") + "'");" />
+    <br />
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -30,16 +31,38 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Level)
-            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Level)
+        </td>*@
+            @{
+                switch (item.Level)
+                {
+                    case LevelEnum.Junior:
+                        <td>
+                            Júnior
+                        </td>
+                        break;
+                    case LevelEnum.Middle:
+                        <td>
+                            Pleno
+                        </td>
+                        break;
+                    case LevelEnum.Senior:
+                        <td>
+                            Senior
+                        </td>
+                        break;
+                    default:
+                        break;
+                }
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.Owner)
             </td>
             <td>
                 @Html.ActionLink("Editar", "Update", new { jobId = item.Id }) |
                 @Html.ActionLink("Detalhes", "Read", new { jobId = item.Id }) |
-                @Html.ActionLink("Deletar", "Delete", new { jobId = item.Id  })
+                @Html.ActionLink("Deletar", "Delete", new { jobId = item.Id })
             </td>
         </tr>
 }

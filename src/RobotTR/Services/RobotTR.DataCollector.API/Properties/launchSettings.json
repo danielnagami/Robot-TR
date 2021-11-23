@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:40905",
+      "applicationUrl": "http://localhost:62806",
       "sslPort": 44361
     }
   },
@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "RobotTR.DataCollector.API": {
+    "RobotTR.Jobs.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

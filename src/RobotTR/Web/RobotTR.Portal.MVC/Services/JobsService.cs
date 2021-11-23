@@ -67,7 +67,7 @@ namespace RobotTR.Portal.MVC.Services
                 FrameworksEnum.Dapper, 
                 FrameworksEnum.EntityFramework, 
                 FrameworksEnum.GWT, 
-                FrameworksEnum.Hibernate, 
+                FrameworksEnum.Hibernate,
                 FrameworksEnum.Http, 
                 FrameworksEnum.Kafka, 
                 FrameworksEnum.NHibernate, 
@@ -75,7 +75,8 @@ namespace RobotTR.Portal.MVC.Services
                 FrameworksEnum.RabbitMQ, 
                 FrameworksEnum.Spark, 
                 FrameworksEnum.Spring,
-                FrameworksEnum.Struts
+                FrameworksEnum.Struts,
+                FrameworksEnum.Wicket
             };
         }
 

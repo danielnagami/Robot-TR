@@ -73,7 +73,7 @@ namespace RobotTR.Authentication.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> Login(UserLogin userLogin)
+        public async Task<ActionResult> Login([FromBody] UserLogin userLogin)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 

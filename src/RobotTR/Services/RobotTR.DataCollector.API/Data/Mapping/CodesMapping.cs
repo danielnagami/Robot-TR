@@ -22,6 +22,10 @@ namespace RobotTR.DataCollector.API.Data.Mapping
                 .IsRequired()
                 .HasColumnType("varchar(MAX)");
 
+            builder.Property(c => c.OwnerUser)
+                .IsRequired()
+                .HasColumnType("varchar(MAX)");
+
             builder.ToTable("Codes");
         }
     }

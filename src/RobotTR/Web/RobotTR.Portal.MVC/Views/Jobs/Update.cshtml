@@ -24,9 +24,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Level" class="control-label">Nível:</label>
-                <br/>
-                <select asp-for="Level" asp-items="Html.GetEnumSelectList<LevelEnum>()">
-                    <option selected=@Model.Level value="">Selecione um nível</option>
+                <br />
+                <select asp-for="Level"
+                        id="levelSelect"
+                        class="form-control"
+                        style="min-width: 350px; overflow: auto;">>
+                    <option selected="selected" value="">Selecione um nível</option>
+                    <option selected="selected" value="@LevelEnum.Junior">Júnior</option>
+                    <option selected="selected" value="@LevelEnum.Middle">Pleno</option>
+                    <option selected="selected" value="@LevelEnum.Senior">Senior</option>
                 </select>
             </div>
             <div class="form-group">
@@ -34,6 +40,9 @@
                 <br />
 
                 <select asp-for="Languages"
+                        id="languagesSelect"
+                        class="form-control"
+                        style="min-width:350px;overflow:auto;"
                         multiple="multiple"
                         asp-items="@ViewBag.Languages"></select>
                 <span asp-validation-for="Languages" class="text-danger"></span>
@@ -43,6 +52,9 @@
                 <label asp-for="Frameworks" class="control-label">Frameworks:</label>
                 <br />
                 <select asp-for="Frameworks"
+                        id="frameworksSelect"
+                        class="form-control"
+                        style="min-width:350px;overflow:auto;"
                         multiple="multiple"
                         asp-items="@ViewBag.Frameworks"></select>
                 <span asp-validation-for="Frameworks" class="text-danger"></span>
@@ -58,3 +70,16 @@
     <a asp-action="Index">Voltar para lista de vagas</a>
 </div>
 
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#languagesSelect").select2();
+            $("#frameworksSelect").select2();
+            $("#levelSelect").select2();
+        });
+    </script>
+}

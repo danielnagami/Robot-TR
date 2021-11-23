@@ -14,7 +14,8 @@
         Play = 9,
         Struts = 10,
         Hibernate = 11,
-        Spark = 12,
-        GWT = 13
+        Wicket = 12,
+        Spark = 13,
+        GWT = 14
     }
 }

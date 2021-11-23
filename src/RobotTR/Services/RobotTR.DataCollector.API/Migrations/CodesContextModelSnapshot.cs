@@ -33,6 +33,10 @@ namespace RobotTR.DataCollector.API.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(MAX)");
 
+                    b.Property<string>("OwnerUser")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
                     b.Property<string>("Project")
                         .IsRequired()
                         .HasColumnType("varchar(MAX)");

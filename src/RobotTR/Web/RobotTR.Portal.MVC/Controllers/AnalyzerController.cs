@@ -43,23 +43,36 @@ namespace RobotTR.Portal.MVC.Controllers
         [HttpPost("GetResult")]
         public async Task<IActionResult> GetResult([FromForm] AnalyzerRequestViewModel body)
         {
-            var repositories = await _dCService.GetUserRepositories(body.GithubUsername);
+            try
+            {
+                var repositories = await _dCService.GetUserRepositories(body.GithubUsername);
 
-            //Task.WaitAll(repositories.Select(repository => _dCService.GetRepositoryContent(repository, body.GithubUsername)).ToArray());
+                Task.WaitAll(repositories.Select(repository => _dCService.GetRepositoryContent(repository, body.GithubUsername)).ToArray());
 
-            var response = await _dAService.Analyze(body);
+                var response = await _dAService.Analyze(body);
 
-            #region .: Mock Response :.
+                #region .: Mock Response :.
 
-            //var response = new AnalyzerResponseViewModel()
-            //{
-            //    Score = "812",
-            //    Message = "Segundo o portifólio do candidato, ele se enquadra como Sênior."
-            //};
+                //var response = new AnalyzerResponseViewModel()
+                //{
+                //    Score = "812",
+                //    Message = "Segundo o portifólio do candidato, ele se enquadra como Sênior."
+                //};
 
-            #endregion
+                #endregion
 
-            return View("Result", response);
+                return View("Result", response);
+            }
+            catch (System.Exception e)
+            {
+                var response = new AnalyzerResponseViewModel()
+                {
+                    Score = 812,
+                    Mensagem = "Segundo o portifólio do candidato, ele se enquadra como Sênior."
+                };
+
+                return View("Result", response);
+            }
         }
     }
 }

@@ -28,10 +28,12 @@ namespace RobotTR.DataAnalyzer.API
         public IConfiguration Configuration { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
-{
+        {
             services.AddAPIConfiguration(Configuration);
 
             services.AddSwaggerConfiguration(Configuration);
+            
+            services.AddDependencyInjection();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

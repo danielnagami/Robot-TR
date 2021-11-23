@@ -14,9 +14,9 @@ namespace RobotTR.Portal.MVC.Extensions
                 .HandleTransientHttpError()
                 .WaitAndRetryAsync(new[]
                 {
-                    TimeSpan.FromSeconds(1),
-                    TimeSpan.FromSeconds(5),
-                    TimeSpan.FromSeconds(10),
+                    TimeSpan.FromSeconds(300),
+                    TimeSpan.FromSeconds(300),
+                    TimeSpan.FromSeconds(300),
                 }, (outcome, timespan, retryCount, context) =>
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;

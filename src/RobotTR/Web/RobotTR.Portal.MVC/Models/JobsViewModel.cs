@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RobotTR.Portal.MVC.Models
 {
     public class JobViewModel
     {
         public Guid Id { get; set; }
+        [Required(ErrorMessage = "O campo Título é obrigatório.")]
         public string Title { get; set; }
+        [Required(ErrorMessage = "O campo Nível é obrigatório.")]
         public LevelEnum Level { get; set; }
+        [Required(ErrorMessage = "O campo Linguagens é obrigatório.")]
         public ICollection<LanguagesEnum> Languages { get; set; }
+        [Required(ErrorMessage = "O campo Frameworks é obrigatório.")]
         public ICollection<FrameworksEnum> Frameworks { get; set; }
         public Guid OwnerId { get; set; }
         public string Owner { get; set; }
@@ -41,8 +46,9 @@ namespace RobotTR.Portal.MVC.Models
         Play = 9,
         Struts = 10,
         Hibernate = 11,
-        Spark = 12,
-        GWT = 13
+        Wicket = 12,
+        Spark = 13,
+        GWT = 14
     }
 
     public class JobUpdate : JobViewModel

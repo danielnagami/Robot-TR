@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RobotTR.Jobs.API.Models;
 using RobotTR.WebAPI.Core.Controllers;
 using RobotTR.WebAPI.Core.User;
-
 using System;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace RobotTR.Jobs.API.Controllers

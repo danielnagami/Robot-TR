@@ -83,7 +83,7 @@ namespace RobotTR.DataCollector.API.Controllers
                 fileContent.content = decodedString;
 
                 _classes.Add(fileContent);
-                AddToDatabase(fileContent, repository);
+                AddToDatabase(fileContent, repository, username);
             }
         }
 
@@ -99,9 +99,9 @@ namespace RobotTR.DataCollector.API.Controllers
             return HTTPRequests.Request<RepositoryContent>(uri, Method.GET);
         }
 
-        private void AddToDatabase(RepositoryContent repositoryContent, string projectName)
+        private void AddToDatabase(RepositoryContent repositoryContent, string projectName, string username)
         {
-            _repository.Add(new Codes(Guid.NewGuid(), projectName, repositoryContent.name, repositoryContent.content));
+            _repository.Add(new Codes(Guid.NewGuid(), projectName, repositoryContent.name, repositoryContent.content, username));
         }
     }
 }
