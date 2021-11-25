@@ -73,7 +73,7 @@ namespace RobotTR.DataCollector.API.Controllers
                     }
                 }
             }
-            else if(path.type.Equals("file") && path.name.EndsWith(".cs"))
+            else if(path.type.Equals("file") && path.name.EndsWith(".cs") || path.type.Equals("file") && path.name.EndsWith(".java"))
             {
                 var fileContent = RepositoryContentSpecific(username, repository, path.path);
 
