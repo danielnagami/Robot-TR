@@ -75,6 +75,9 @@ def analyze(job, xpyears, githubuser):
 
     finalScore = xpScore + score + fw + dpScore
 
+    if finalScore > 1000:
+        finalScore = 1000
+
     mensagem = "O perfil do candidato corresponde ao n&iacute;vel de J&uacute;nior."
     if finalScore > 500:
         mensagem = "O perfil do candidato corresponde ao n&iacute;vel de Pleno."

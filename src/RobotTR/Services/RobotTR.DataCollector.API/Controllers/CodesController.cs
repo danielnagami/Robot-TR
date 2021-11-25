@@ -14,7 +14,7 @@ namespace RobotTR.DataCollector.API.Controllers
             _repository = repository;
         }
 
-        [HttpPost("delete-project")]
+        [HttpDelete("delete-project")]
         public IActionResult DeleteProject(string name)
         {
             _repository.DropProject(name);
