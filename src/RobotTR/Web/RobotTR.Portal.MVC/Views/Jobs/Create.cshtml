@@ -43,6 +43,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Frameworks" class="control-label">Frameworks:</label>
+                <i class="bi bi-info-circle" data-toggle="tooltip" data-placement="top" title="Framework description"></i>
                 <br />
                 <select id="frameworksSelect" asp-for="Frameworks"
                         class="form-control"
@@ -73,5 +74,10 @@
             $("#frameworksSelect").select2();
             $("#levelSelect").select2();
         });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
     </script>
 }

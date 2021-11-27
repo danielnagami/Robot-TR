@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Polly.CircuitBreaker;
-using Refit;
+//using Refit;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -25,14 +25,14 @@ namespace RobotTR.Portal.MVC.Extensions
             {
                 HandleRequestExceptionAsync(httpContext, ex.StatusCode);
             }
-            catch (ValidationApiException ex)
-            {
-                HandleRequestExceptionAsync(httpContext, ex.StatusCode);
-            }
-            catch (ApiException ex)
-            {
-                HandleRequestExceptionAsync(httpContext, ex.StatusCode);
-            }
+            //catch (ValidationApiException ex)
+            //{
+            //    HandleRequestExceptionAsync(httpContext, ex.StatusCode);
+            //}
+            //catch (ApiException ex)
+            //{
+            //    HandleRequestExceptionAsync(httpContext, ex.StatusCode);
+            //}
             catch (BrokenCircuitException)
             {
                 HandleCircuitBreakerExceptionASyunc(httpContext);
