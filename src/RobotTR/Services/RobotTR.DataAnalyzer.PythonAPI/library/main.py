@@ -86,6 +86,11 @@ def analyze(job, xpyears, githubuser):
 
     returnObject = { 'Score': finalScore, 'Mensagem': mensagem }
 
+
+
+    # return str(json.dumps(score, indent=4))
+    # return str(json.dumps(rw, indent=4))
+
     return str(json.dumps(returnObject, indent=4))
 
 def CheckReservedWords(cursor):
