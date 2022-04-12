@@ -1,0 +1,96 @@
+version: "3"
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.8-management
+    container_name: rabbit-robottr
+    environment:
+      RABBITMQ_DEFAULT_USER: "robottruser"
+      RABBITMQ_DEFAULT_PASS: "r0b0ttrus3r"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  api-auth:
+    image: robottr/robottr-auth-api:latest
+    container_name: robottr-auth-api
+    build:
+      context: ../src
+      dockerfile: ./RobotTR/Services/RobotTR.Authentication.API/Dockerfile
+    ports:
+      - "6002:6002"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:6002
+    depends_on: 
+      - rabbitmq
+      - api-user
+
+  api-user:
+    image: robottr/robottr-user-api:latest
+    container_name: robottr-user-api
+    build:
+      context: ../src
+      dockerfile: ./RobotTR/Services/RobotTR.User.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:6003
+    depends_on: 
+      - rabbitmq
+
+  api-jobs:
+    image: robottr/robottr-jobs-api:latest
+    container_name: robottr-jobs-api
+    build:
+      context: ../src
+      dockerfile: ./RobotTR/Services/RobotTR.Jobs.API/Dockerfile
+    ports:
+      - "6004:6004"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:6004
+    depends_on: 
+      - rabbitmq
+
+  api-datacollector:
+    image: robottr/robottr-datacollector-api:latest
+    container_name: robottr-datacollector-api
+    build:
+      context: ../src
+      dockerfile: ./RobotTR/Services/RobotTR.DataCollector.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:6005
+    depends_on: 
+      - rabbitmq
+
+  api-dataanalyzer:
+    image: robottr/robottr-dataanalyzer-api:latest
+    container_name: robottr-dataanalyzer-api
+    build:
+      context: ../src
+      dockerfile: ./RobotTR/Services/RobotTR.DataAnalyzer.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:6006
+    depends_on: 
+      - rabbitmq
+
+  web-mvc:
+    image: robottr/robottr-web-mvc:latest
+    container_name: robottr-web-mvc
+    build:
+      context: ../src
+      dockerfile: ./RobotTR/Web/RobotTR.Portal.MVC/Dockerfile
+    ports:
+      - "6001:6001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:6001
+    depends_on:
+      - api-auth
+      - api-user
+      - api-jobs
+      - api-datacollector
+      - api-dataanalyzer

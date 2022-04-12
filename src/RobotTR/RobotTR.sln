@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31129.286
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{25124692-47FF-4E82-B9B4-731AB725350E}"
 EndProject
@@ -39,15 +39,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{4C8AF80A-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BB5E25FC-7970-4B74-94DC-9F4C0BC31412}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotTR.WebAPI.Core", "BuildingBlocks\Services\RobotTR.WebAPI.Core\RobotTR.WebAPI.Core.csproj", "{2F7F14D0-592C-4A3E-A23A-64FEFF7CC664}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotTR.WebAPI.Core", "BuildingBlocks\Services\RobotTR.WebAPI.Core\RobotTR.WebAPI.Core.csproj", "{2F7F14D0-592C-4A3E-A23A-64FEFF7CC664}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6A7AD49A-6C96-49FE-AB4C-3E21D7BE0B56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotTR.Core", "BuildingBlocks\Core\RobotTR.Core\RobotTR.Core.csproj", "{CF3363E7-D146-4B26-B9D7-9F651B789A06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotTR.Core", "BuildingBlocks\Core\RobotTR.Core\RobotTR.Core.csproj", "{CF3363E7-D146-4B26-B9D7-9F651B789A06}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBus", "MessageBus", "{BE4B50D0-580D-4A93-9A37-51C53F7860E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotTR.MessageBus", "BuildingBlocks\MessageBus\RobotTR.MessageBus\RobotTR.MessageBus.csproj", "{A1068659-87FA-4EE2-BF95-BD6C7910321C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotTR.MessageBus", "BuildingBlocks\MessageBus\RobotTR.MessageBus\RobotTR.MessageBus.csproj", "{A1068659-87FA-4EE2-BF95-BD6C7910321C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotTR.Portal.MVC.Blazor", "Web\RobotTR.Portal.MVC.Blazor\RobotTR.Portal.MVC.Blazor.csproj", "{950EFA7F-66EF-4503-9359-B06EF7849501}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,10 @@ Global
 		{A1068659-87FA-4EE2-BF95-BD6C7910321C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1068659-87FA-4EE2-BF95-BD6C7910321C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1068659-87FA-4EE2-BF95-BD6C7910321C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950EFA7F-66EF-4503-9359-B06EF7849501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950EFA7F-66EF-4503-9359-B06EF7849501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950EFA7F-66EF-4503-9359-B06EF7849501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950EFA7F-66EF-4503-9359-B06EF7849501}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +128,7 @@ Global
 		{CF3363E7-D146-4B26-B9D7-9F651B789A06} = {6A7AD49A-6C96-49FE-AB4C-3E21D7BE0B56}
 		{BE4B50D0-580D-4A93-9A37-51C53F7860E0} = {A36382EF-C65B-45D5-B098-0321DA51B071}
 		{A1068659-87FA-4EE2-BF95-BD6C7910321C} = {BE4B50D0-580D-4A93-9A37-51C53F7860E0}
+		{950EFA7F-66EF-4503-9359-B06EF7849501} = {25124692-47FF-4E82-B9B4-731AB725350E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {71C7BE45-23BD-42CC-ADFA-DBCDA4D97227}

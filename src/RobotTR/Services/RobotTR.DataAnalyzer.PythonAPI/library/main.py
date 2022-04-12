@@ -11,13 +11,15 @@ def analyze(job, xpyears, githubuser):
 
     authPayload = {'email': 'daniel2@nagami.com', 'senha': 'Senha@123'}
     authHeaders = { 'Content-type' : 'application/json' }
-    tokenRequest = requests.post('https://localhost:44369/api/auth/login', data = json.dumps(authPayload, indent = 4), verify = False, headers=authHeaders)
+    # tokenRequest = requests.post('https://localhost:44369/api/auth/login', data = json.dumps(authPayload, indent = 4), verify = False, headers=authHeaders)
+    tokenRequest = requests.post('http://localhost:6002/api/auth/login', data = json.dumps(authPayload, indent = 4), verify = False, headers=authHeaders)
     authToken = tokenRequest.json()['accessToken']
 
     bearerToken = 'Bearer '
     bearerToken += authToken
     jobHeaders = { 'Authorization': bearerToken }
-    jobAddress = 'https://localhost:44394/api/Jobs/Read?jobId='
+    # jobAddress = 'https://localhost:44394/api/Jobs/Read?jobId='
+    jobAddress = 'http://localhost:6004/api/Jobs/Read?jobId='
     jobAddress += job
     jobsRequest = requests.get(jobAddress, verify = False, headers=jobHeaders)
 
@@ -58,6 +60,9 @@ def analyze(job, xpyears, githubuser):
         xpNeeded = 10
 
     xpScore = (int(xpyears) * 250) / xpNeeded
+
+    if xpScore > 300:
+        xpScore = 300
 
     rw = CheckReservedWords(cursor)
 

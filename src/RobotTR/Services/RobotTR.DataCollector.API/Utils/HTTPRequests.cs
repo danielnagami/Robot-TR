@@ -9,7 +9,8 @@ namespace RobotTR.DataCollector.API.Utils
         {
             var client = new RestClient("https://api.github.com/" + uri);
             var request = new RestRequest(method);
-            request.AddHeader("Authorization", "Bearer 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");
+            //request.AddHeader("Authorization", "Bearer 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");
+            request.AddHeader("Authorization", "Bearer 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");
             IRestResponse response = client.Execute(request);
             try
             {
