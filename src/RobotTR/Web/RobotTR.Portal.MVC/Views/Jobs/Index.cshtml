@@ -6,9 +6,8 @@
 
 <h1>Vagas</h1>
 
-<div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <input type="button" class="btn btn-primary" value="Criar Vaga" onclick="@("window.location.href='" + @Url.Action("Create", "Jobs") + "'");" />
-    <br />
 </div>
 <table class="table">
     <thead>
@@ -60,9 +59,17 @@
                 @Html.DisplayFor(modelItem => item.Owner)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Update", new { jobId = item.Id }) |
-                @Html.ActionLink("Detalhes", "Read", new { jobId = item.Id }) |
-                @Html.ActionLink("Deletar", "Delete", new { jobId = item.Id })
+                <div class="btn-group" role="group">
+                    <div class="btn btn-outline-primary">
+                        @Html.ActionLink("Editar", "Update", new { jobId = item.Id })
+                    </div>
+                    <div class="btn btn-outline-primary">
+                        @Html.ActionLink("Detalhes", "Read", new { jobId = item.Id })
+                    </div>
+                    <div class="btn btn-outline-danger">
+                        @Html.ActionLink("Deletar", "Delete", new { jobId = item.Id })
+                    </div>
+                </div>
             </td>
         </tr>
 }
