@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3" style="background-color: #6610f2;">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RoboTR</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -25,24 +25,24 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav navbar-right">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Página Inicial</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Página Inicial</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Jobs" asp-action="Index">Vagas</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Jobs" asp-action="Index">Vagas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Analyzer" asp-action="Index">Analisador</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Analyzer" asp-action="Index">Analisador</a>
                         </li>
                         @if (!AppUser.IsAuthenticated())
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">Entrar</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Login">Entrar</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
                             </li>
                         }
                     </ul>

@@ -25,53 +25,47 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.Level)
-        </td>*@
-            @{
-                switch (item.Level)
-                {
-                    case LevelEnum.Junior:
-                        <td>
-                            Júnior
-                        </td>
-                        break;
-                    case LevelEnum.Middle:
-                        <td>
-                            Pleno
-                        </td>
-                        break;
-                    case LevelEnum.Senior:
-                        <td>
-                            Senior
-                        </td>
-                        break;
-                    default:
-                        break;
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Level)
+                    </td>*@
+                @{
+                    switch (item.Level)
+                    {
+                        case LevelEnum.Junior:
+                            <td>
+                                Júnior
+                            </td>
+                            break;
+                        case LevelEnum.Middle:
+                            <td>
+                                Pleno
+                            </td>
+                            break;
+                        case LevelEnum.Senior:
+                            <td>
+                                Senior
+                            </td>
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner)
-            </td>
-            <td>
-                <div class="btn-group" role="group">
-                    <div class="btn btn-outline-primary">
-                        @Html.ActionLink("Editar", "Update", new { jobId = item.Id })
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner)
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        @Html.ActionLink("Detalhes", "Update", new { jobId = item.Id }, new { @class =  "btn btn-primary"})
+                        @Html.ActionLink("Deletar", "Delete", new { jobId = item.Id }, new { @class = "btn btn-danger"})
                     </div>
-                    <div class="btn btn-outline-primary">
-                        @Html.ActionLink("Detalhes", "Read", new { jobId = item.Id })
-                    </div>
-                    <div class="btn btn-outline-danger">
-                        @Html.ActionLink("Deletar", "Delete", new { jobId = item.Id })
-                    </div>
-                </div>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
