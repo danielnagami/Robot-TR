@@ -7,57 +7,60 @@
 <h1>Criar Vaga</h1>
 
 <hr />
-<form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="row g-3 align-items-center">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="col-md-6">
-        <label asp-for="Title" class="control-label">Título da vaga:</label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
-    <div class="col-md-6">
-        <label asp-for="Level" class="control-label">Nível:</label>
-        <br />
-        <select asp-for="Level"
-                id="levelSelect"
-                class="form-control"
-                style="min-width: 350px; overflow: auto;">
-            <option selected="selected" value="">Selecione o nível</option>
-            <option value="@LevelEnum.Junior">Júnior</option>
-            <option value="@LevelEnum.Middle">Pleno</option>
-            <option value="@LevelEnum.Senior">Senior</option>
-        </select>
-    </div>
-    <div class="col-12">
-        <label asp-for="Languages" class="control-label">Linguagens:</label>
-        <br />
+<div class="container">
+    <div class="row justify-content-md-center">
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Título da vaga:</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Level" class="control-label">Nível:</label>
+                <br />
+                <select asp-for="Level"
+                        id="levelSelect"
+                        class="form-control"
+                        style="min-width: 350px; overflow: auto;">
+                    <option selected="selected" value="">Selecione o nível</option>
+                    <option value="@LevelEnum.Junior">Júnior</option>
+                    <option value="@LevelEnum.Middle">Pleno</option>
+                    <option value="@LevelEnum.Senior">Senior</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Languages" class="control-label">Linguagens:</label>
+                <br />
 
-        <select id="languagesSelect" asp-for="Languages"
-                class="form-control"
-                style="min-width:350px;overflow:auto;"
-                multiple="multiple"
-                asp-items="@ViewBag.Languages"></select>
-        <span asp-validation-for="Languages" class="text-danger"></span>
-        <br />
+                <select id="languagesSelect" asp-for="Languages"
+                        class="form-control"
+                        style="min-width:350px;overflow:auto;"
+                        multiple="multiple"
+                        asp-items="@ViewBag.Languages"></select>
+                <span asp-validation-for="Languages" class="text-danger"></span>
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="Frameworks" class="control-label">Frameworks:</label>
+                <i class="bi bi-info-circle" data-toggle="tooltip" data-placement="top" title="Os framework são bibliotecas de código que auxiliam no desenvolvimento de soluções de problemas cotidianos."></i>
+                <br />
+                <select id="frameworksSelect" asp-for="Frameworks"
+                        class="form-control"
+                        style="min-width: 350px; overflow: auto;"
+                        multiple="multiple"
+                        asp-items="@ViewBag.Frameworks"></select>
+                <span asp-validation-for="Frameworks" class="text-danger"></span>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Criar</button>
+            </div>
+            <div>
+                <a asp-action="Index">Voltar para lista de vagas</a>
+            </div>
+        </form>
     </div>
-    <div class="col-12">
-        <label asp-for="Frameworks" class="control-label">Frameworks:</label>
-        <i class="bi bi-info-circle" data-toggle="tooltip" data-placement="top" title="Os framework são bibliotecas de código que auxiliam no desenvolvimento de soluções de problemas cotidianos."></i>
-        <br />
-        <select id="frameworksSelect" asp-for="Frameworks"
-                class="form-control"
-                style="min-width: 350px; overflow: auto;"
-                multiple="multiple"
-                asp-items="@ViewBag.Frameworks"></select>
-        <span asp-validation-for="Frameworks" class="text-danger"></span>
-    </div>
-    <div class="col-12 d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-primary">Criar</button>
-    </div>
-</form>
-
-<div>
-    <a asp-action="Index">Voltar para lista de vagas</a>
-</div>
+</div>  
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
