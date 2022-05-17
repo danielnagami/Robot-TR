@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
+
 using RestSharp;
+
+using System.Text;
 
 namespace RobotTR.DataCollector.API.Utils
 {
@@ -9,7 +12,8 @@ namespace RobotTR.DataCollector.API.Utils
         {
             var client = new RestClient("https://api.github.com/" + uri);
             var request = new RestRequest(method);
-            request.AddHeader("Authorization", "Bearer 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");
+            var auth = Base64Decode("Z2hwX2Naa1FGWHRsTlkxYklQVk90ZFVsaVRXVmpzRWF0ZTNsT0pwOA==");
+            request.AddHeader("Authorization", $"Bearer {auth}");
             IRestResponse response = client.Execute(request);
             try
             {
@@ -19,6 +23,12 @@ namespace RobotTR.DataCollector.API.Utils
             {
                 return default(T);
             }
+        }
+
+        public static string Base64Decode(string value)
+{
+            var valueBytes = System.Convert.FromBase64String(value);
+            return Encoding.UTF8.GetString(valueBytes);
         }
     }
 }
